@@ -13,4 +13,4 @@ runs:
 
     - name: Echo third message
       shell: bash
-      run: echo "Hi, this is the third command"
+      run: echo "yes baby it works*******************"
