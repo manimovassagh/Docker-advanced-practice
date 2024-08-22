@@ -20,3 +20,6 @@ jobs:
 
       - name: Run composite action
         uses: ./.github/actions/composite-action
+
+      - name: Run composite action
+        uses: ./.github/actions/second
