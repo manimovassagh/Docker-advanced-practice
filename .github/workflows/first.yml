@@ -16,3 +16,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+
+      - name: Run composite action
+        uses: ./.github/actions/composite-action
