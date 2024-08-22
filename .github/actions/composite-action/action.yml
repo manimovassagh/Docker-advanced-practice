@@ -4,4 +4,5 @@ runs:
   using: 'composite'
   steps:
     - name: Echo message
+      shell: bash
       run: echo "Hi, I am composite"
