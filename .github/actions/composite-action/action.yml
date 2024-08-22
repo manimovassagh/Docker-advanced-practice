@@ -1,0 +1,7 @@
+name: 'Echo Composite Action'
+description: 'A simple composite action that echoes a message'
+runs:
+  using: 'composite'
+  steps:
+    - name: Echo message
+      run: echo "Hi, I am composite"
