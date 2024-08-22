@@ -1,8 +1,16 @@
 name: 'Echo Composite Action'
-description: 'A simple composite action that echoes a message'
+description: 'A composite action with multiple commands'
 runs:
   using: 'composite'
   steps:
-    - name: Echo message
+    - name: Echo first message
       shell: bash
-      run: echo "Hi, I am composite"
+      run: echo "Hi, this is the first command"
+
+    - name: Echo second message
+      shell: bash
+      run: echo "Hi, this is the second command"
+
+    - name: Echo third message
+      shell: bash
+      run: echo "Hi, this is the third command"
