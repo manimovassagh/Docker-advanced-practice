@@ -6,6 +6,7 @@ WORKDIR /usr/share/nginx/html
 
 
 
+
 # Remove the default Nginx static files
 RUN rm -rf ./*
 
