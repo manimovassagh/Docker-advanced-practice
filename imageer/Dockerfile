@@ -4,6 +4,7 @@ FROM nginx:alpine
 # Set the working directory to /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
 
+
 # Remove the default Nginx static files
 RUN rm -rf ./*
 
