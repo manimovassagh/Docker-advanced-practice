@@ -6,7 +6,6 @@ services:
     image: redis
 
 
-
   redis-commander:
     container_name: redis-commander
     hostname: redis-commander
