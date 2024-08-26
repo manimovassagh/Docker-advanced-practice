@@ -11,6 +11,8 @@ RUN rm -rf ./*
 
 
 
+
+
 # Copy the index.html file from the current directory to the container
 COPY index.html .
 
