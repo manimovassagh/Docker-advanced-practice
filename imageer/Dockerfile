@@ -7,6 +7,8 @@ WORKDIR /usr/share/nginx/html
 # Remove the default Nginx static files
 RUN rm -rf ./*
 
+
+
 # Copy the index.html file from the current directory to the container
 COPY index.html .
 
