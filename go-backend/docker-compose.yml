@@ -1,0 +1,15 @@
+services:
+  go-backend:
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:1234"
+    volumes:
+      - ./go-backend:/app/src
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
