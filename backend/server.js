@@ -8,11 +8,11 @@ app.use(cors()); // Enable CORS for all routes
 app.get('/', (req, res) => {
   res.send([
     {
-      name: "mani awsome",
+      name: "I can learn anything ",
       age: 44
     },
     {
-      name: "Changed Sahar",
+      name: "Changed Sahar 2222",
       age: 38
     }
   ]);
