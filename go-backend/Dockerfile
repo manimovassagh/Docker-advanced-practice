@@ -3,12 +3,13 @@ FROM golang:latest
 WORKDIR /app
 
 COPY go.mod .
-COPY go.sum . 
+COPY go.sum .
 RUN go mod download
 
 COPY . .
 
-EXPOSE 1234
-RUN go install
+RUN go build -o main .
 
-CMD ["go", "run", "main.go"]
+EXPOSE 1234
+
+CMD ["./main"]
