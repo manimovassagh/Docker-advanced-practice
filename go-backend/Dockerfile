@@ -8,6 +8,11 @@ RUN go mod download
 
 COPY . .
 
+
+
+
+
+
 RUN go build -o main .
 
 EXPOSE 1234
