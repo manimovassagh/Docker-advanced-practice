@@ -1,6 +1,6 @@
 name: PostgreSQL with Data Mount
 
-on: [push]
+on: [push,workflow_dispatch]
 
 jobs:
   postgres-job:
@@ -17,11 +17,7 @@ jobs:
           --mount type=bind,source=${{ github.workspace }}/mounter,target=/var/lib/postgresql/data
         ports:
           - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U myuser -d mydatabase"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
+
 
     steps:
     - name: Checkout repository
