@@ -6,7 +6,7 @@ jobs:
   postgres-job:
     runs-on: ubuntu-latest
 
-    
+
     services:
       postgres:
         image: postgres:latest
@@ -28,7 +28,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: ls files
-      uses: ls .
+      run: ls .
 
     - name: Verify directory exists
       run: |
