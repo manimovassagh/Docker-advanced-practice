@@ -1,33 +1,13 @@
+version: '3.8'
 
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - "5174:5174"
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
     volumes:
-      - /app/node_modules
-      - ./frontend:/app
-    depends_on:
-      - backend
-    networks:
-      - app-network
-
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    restart: always
+      - ./mounter:/var/lib/postgresql/data
     ports:
-      - "8000:8000" 
-    volumes:
-      - /app/node_modules
-      - ./backend:/app
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+      - "5432:5432"
