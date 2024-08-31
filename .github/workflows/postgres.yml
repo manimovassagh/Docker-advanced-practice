@@ -3,9 +3,18 @@ name: PostgreSQL with Data Mount
 on: [push]
 
 jobs:
+  
   postgres-job:
     runs-on: ubuntu-latest
+    steps:
+      - name: pwd
+        run: pwd
+      - name: List root directory contents
+        run: ls /
+      - name: List repository directory contents
+        run: ls -R ${{ github.workspace }}
 
+        
     services:
       postgres:
         image: postgres:latest
