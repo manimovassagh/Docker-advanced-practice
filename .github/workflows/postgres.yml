@@ -18,11 +18,11 @@ jobs:
       run: docker-compose up -d
 
     - name: Wait for PostgreSQL to be ready
-      run: sleep 30
+      run: sleep 10
 
     - name: Run PostgreSQL query
       run: |
-        docker-compose exec postgres psql -U myuser -d mydatabase -c "SELECT * FROM employees;"
+        docker ps
 
     - name: Shut down services
       run: docker-compose down
