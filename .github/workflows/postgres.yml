@@ -15,7 +15,7 @@ jobs:
 
 
     - name: Build and run services
-      run: docker compose up -d
+      run: docker compose up
 
     - name: Wait for PostgreSQL to be ready
       run: sleep 10
@@ -23,6 +23,9 @@ jobs:
     - name: Run PostgreSQL query
       run: |
         docker ps
+    - name: check all containers
+      run: |
+        docker ps -a
 
     - name: Shut down services
       run: docker-compose down
