@@ -15,10 +15,10 @@ jobs:
 
 
     - name: Build and run services
-      run: docker-compose up -d
+      run: docker compose up -d
 
     - name: Wait for PostgreSQL to be ready
-      run: sleep 40
+      run: sleep 10
 
     - name: Run PostgreSQL query
       run: |
