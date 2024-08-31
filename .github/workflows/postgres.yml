@@ -15,39 +15,23 @@ jobs:
         run: ls -R ${{ github.workspace }}
 
         
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: myuser
-          POSTGRES_PASSWORD: mypassword
-          POSTGRES_DB: mydatabase
-        options: >-
-          --mount type=bind,source=${{ github.workspace }}/mounter,target=/var/lib/postgresql/data
-          --health-cmd="pg_isready -U myuser -d mydatabase"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
-        ports:
-          - 5432:5432
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Verify directory exists
-      run: |
-        if [ -d "${{ github.workspace }}/mounter" ]; then 
-          echo "Directory exists"; 
-          ls -R ${{ github.workspace }}/mounter; 
-        else 
-          echo "Directory does not exist"; 
-          exit 1;
-        fi
+      - name: Verify directory exists
+        run: |
+          if [ -d "${{ github.workspace }}/mounter" ]; then 
+            echo "Directory exists"; 
+            ls -R ${{ github.workspace }}/mounter; 
+          else 
+            echo "Directory does not exist"; 
+            exit 1;
+          fi
 
-    - name: Wait for PostgreSQL to be ready
-      run: sleep 30
+      - name: Wait for PostgreSQL to be ready
+        run: sleep 30
 
-    - name: Query Data
-      run: |
-        docker exec -i ${{ job.services.postgres.id }} psql -U myuser -d mydatabase -c "SELECT * FROM employees;"
+      - name: Query Data
+        run: |
+          docker exec -i ${{ job.services.postgres.id }} psql -U myuser -d mydatabase -c "SELECT * FROM employees;"
