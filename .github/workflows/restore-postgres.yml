@@ -18,18 +18,25 @@ jobs:
           POSTGRES_PASSWORD: mysecretpassword
         ports:
           - 5432:5432
-
+        options: > 
+          --health-cmd="pg_isready -U postgres" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=5
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: List files in the repository (for debugging)
+      run: ls -R
 
     - name: Create Docker volume
       run: docker volume create restored_pgdata
 
     - name: Restore Postgres data from backup
       run: |
-        docker run --rm -v restored_pgdata:/volume -v $(pwd)/backups:/backup busybox tar xzvf /backup/postgres_volume_backup.tar.gz -C /volume
+        docker run --rm -v restored_pgdata:/volume -v $(pwd)/backup:/backup busybox tar xzvf /backup/postgres_volume_backup.tar.gz -C /volume
 
     - name: Start Postgres with Restored Volume
       run: |
@@ -37,4 +44,4 @@ jobs:
 
     - name: Verify Data
       run: |
-        docker exec -it github_postgres_container psql -U postgres -d my_sample_db -c "SELECT * FROM employees;"
+        docker exec github_postgres_container psql -U postgres -d my_sample_db -c "SELECT * FROM employees;"
