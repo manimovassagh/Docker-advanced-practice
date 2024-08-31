@@ -9,21 +9,6 @@ jobs:
   restore-postgres:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_DB: my_sample_db
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: mysecretpassword
-        ports:
-          - 5432:5432
-        options: > 
-          --health-cmd="pg_isready -U postgres" 
-          --health-interval=10s 
-          --health-timeout=5s 
-          --health-retries=5
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -40,7 +25,17 @@ jobs:
 
     - name: Start Postgres with Restored Volume
       run: |
-        docker run -d --name github_postgres_container -e POSTGRES_PASSWORD=mysecretpassword -v restored_pgdata:/var/lib/postgresql/data postgres
+        docker run -d --name github_postgres_container \
+          -e POSTGRES_DB=my_sample_db \
+          -e POSTGRES_USER=postgres \
+          -e POSTGRES_PASSWORD=mysecretpassword \
+          -p 5432:5432 \
+          --health-cmd="pg_isready -U postgres" \
+          --health-interval=10s \
+          --health-timeout=5s \
+          --health-retries=5 \
+          -v restored_pgdata:/var/lib/postgresql/data \
+          postgres:latest
 
     - name: Verify Data
       run: |
