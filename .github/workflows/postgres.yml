@@ -30,5 +30,3 @@ jobs:
     - name: Shut down services
       run: docker-compose down
     
-
-  
