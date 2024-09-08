@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("[controller]")]
+[Route("mani")]
 public class HelloWorldController : ControllerBase
 {
     [HttpGet]
@@ -9,8 +9,9 @@ public class HelloWorldController : ControllerBase
     {
         var response = new 
         {
-            Name = "John Doe",
-            Age = 30
+            Name = "🌟 Mani Developer 🌟",
+            Age = 30,
+            Message = "Welcome to the 🌍 Hello World API! 🚀"
         };
         return Ok(response);
     }
