@@ -1,7 +1,3 @@
-
-
-using System.Data.Common;
-
 namespace ConsoleApp1.models
 {
     public class Course
