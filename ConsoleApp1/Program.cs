@@ -9,4 +9,5 @@ Course course = new Course(1, "Learning dotnet c#");
 string t =course.GetSampleCourse();
 Console.WriteLine(student.Name);
 Console.WriteLine(student2.Name);
-Console.WriteLine(Mani.changer());
+Console.WriteLine(Mani.CourserGiver().Name);
+Console.WriteLine(Mani.CourserGiver().Id);

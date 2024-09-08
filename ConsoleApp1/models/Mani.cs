@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace ConsoleApp1.models
 {
@@ -9,9 +6,10 @@ namespace ConsoleApp1.models
     {
 
 
-        public static string changer()
+        public static Course CourserGiver()
         {
-            return "it is changing";
+            Course course = new(3, "I am doing well baby");
+            return course;
         }
 
     }
