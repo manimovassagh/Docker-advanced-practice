@@ -4,3 +4,4 @@ backend/node_modules
 database/db-data
 database/yourdb_backup.dump
 db-data
+node_back/node_modules
