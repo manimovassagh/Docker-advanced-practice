@@ -5,5 +5,5 @@ services:
     image: manimovassagh/simpledotnet:latest
     container_name: simpledotnet-api
     ports:
-      - "8080:80"
+      - "8080:8080"
     restart: always
