@@ -9,4 +9,4 @@ Course course = new Course(1, "Learning dotnet c#");
 string t =course.GetSampleCourse();
 Console.WriteLine(student.Name);
 Console.WriteLine(student2.Name);
-Console.WriteLine(t);
+Console.WriteLine(Mani.changer());
