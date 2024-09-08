@@ -13,4 +13,4 @@ Console.WriteLine(res);
 
 // Serialize student2 to JSON
 string student2Json = JsonSerializer.Serialize(student2, new JsonSerializerOptions { WriteIndented = true });
-Console.WriteLine(student2Json);
+Console.WriteLine(student2.ToString());

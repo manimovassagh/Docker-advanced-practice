@@ -19,5 +19,10 @@ namespace ConsoleApp1
             Address = address;
             Company = company;
         }
+
+          public override string ToString()
+    {
+        return $"Id: {Id}, Name: {Name}, Age: {Age}, Email: {Email}, Address: {Address}, Company: {Company}";
+    }
     }
     }
