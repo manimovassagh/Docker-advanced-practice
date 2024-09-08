@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "TpVfquzLzqJAuFgT0SMauIsE4NsdwQ19nlayEns6ic4=",
+  "Source": "sample-maker",
+  "BasePath": "_content/sample-maker",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
