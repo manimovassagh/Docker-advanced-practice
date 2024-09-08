@@ -10,6 +10,10 @@ int res = mani.sum(4, 12);
 string t = course.GetSampleCourse();
 Console.WriteLine(mani.CourserGiver().Name);
 Console.WriteLine(res);
+Console.WriteLine(res);
+Console.WriteLine(res);
+Console.WriteLine(res);
+Console.WriteLine(res);
 
 // Serialize student2 to JSON
 string student2Json = JsonSerializer.Serialize(student2, new JsonSerializerOptions { WriteIndented = true });
