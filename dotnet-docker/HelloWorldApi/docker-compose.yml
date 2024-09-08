@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  simpledotnet-api:
+    image: manimovassagh/simpledotnet:latest
+    container_name: simpledotnet-api
+    ports:
+      - "8080:80"
+    restart: always
