@@ -6,6 +6,7 @@ app.get('/', (req, res) => {
   res.send({
     "name":"Mani"
   })
+  console.log("The home route hit!!!")
 })
 
 app.listen(port, () => {
