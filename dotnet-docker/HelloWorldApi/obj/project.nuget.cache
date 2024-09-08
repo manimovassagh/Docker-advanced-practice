@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "MX+Isfumbks=",
+  "success": true,
+  "projectFilePath": "/Users/mani/Documents/Projects/docker-practice/dotnet-docker/HelloWorldApi/HelloWorldApi.csproj",
+  "expectedPackageFiles": [
+    "/Users/mani/.nuget/packages/microsoft.netcore.app.ref/7.0.20/microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/mani/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.20/microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/mani/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.20/microsoft.netcore.app.host.osx-arm64.7.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}
