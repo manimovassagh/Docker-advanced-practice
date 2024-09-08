@@ -10,7 +10,6 @@ namespace ConsoleApp1
         public string Address { get; set; }
         public string Company { get; set; }
 
-        // Constructor to initialize the Student entity
         public Student(int id, string name, int age, string email, string address,string company)
         {
             Id = id;
@@ -21,5 +20,4 @@ namespace ConsoleApp1
             Company = company;
         }
     }
-
     }
