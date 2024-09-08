@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorldApi", "dotnet-doc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sample-maker", "sample-maker\sample-maker.csproj", "{508ECC9D-AAA7-4728-A530-C4EC817F9341}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{6739F501-D810-48E6-AB68-8B7158D0ACCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{508ECC9D-AAA7-4728-A530-C4EC817F9341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{508ECC9D-AAA7-4728-A530-C4EC817F9341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{508ECC9D-AAA7-4728-A530-C4EC817F9341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6739F501-D810-48E6-AB68-8B7158D0ACCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6739F501-D810-48E6-AB68-8B7158D0ACCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6739F501-D810-48E6-AB68-8B7158D0ACCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6739F501-D810-48E6-AB68-8B7158D0ACCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
