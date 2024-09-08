@@ -13,5 +13,8 @@ Console.WriteLine(mani.CourserGiver().Name);
 
 // Serialize student2 to JSON
 string student2Json = JsonSerializer.Serialize(student2, new JsonSerializerOptions { WriteIndented = true });
-string student3Json = JsonSerializer.Serialize(student2, new JsonSerializerOptions { WriteIndented = true });
+Console.WriteLine(student2.ToString());
+Console.WriteLine(student2.ToString());
+Console.WriteLine(student2.ToString());
+Console.WriteLine(student2.ToString());
 Console.WriteLine(student2.ToString());
