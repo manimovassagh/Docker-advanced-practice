@@ -6,13 +6,15 @@ Student student = new Student(1, "Mani Mova", 20, "mani@example.com", "123 Main 
 Student student2 = new Student(2, "Sahar", 22, "mani@example.com", "123 Main St", "foo-company");
 Course course = new Course(1, "Learning dotnet c#");
 Mani mani = new();
-int res = mani.sum(4, 12);
 string t = course.GetSampleCourse();
-Console.WriteLine(mani.CourserGiver().Name);
 Dictionary<int,string> lists = new Dictionary<int,string>  {
     {1,"mani"},
+    {2,"Sahar"},
+    {3,"Mehdi"},
+    {4,"Arash"},
 };
 string student2Json = JsonSerializer.Serialize(student2, new JsonSerializerOptions { WriteIndented = true });
-Console.WriteLine(student2.ToString());
-Console.WriteLine(student2.ToString());
+string res= JsonSerializer.Serialize(lists, new JsonSerializerOptions { WriteIndented = true });
+Console.WriteLine(res);
+
 
