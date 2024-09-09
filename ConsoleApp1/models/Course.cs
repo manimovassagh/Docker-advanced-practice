@@ -3,7 +3,7 @@ namespace ConsoleApp1.models
     public class Course
     {
         public int Id { get; set; }
-        
+
         public string Name { get; set; }
 
 
@@ -14,7 +14,7 @@ namespace ConsoleApp1.models
 
         }
 
-        public  string GetSampleCourse()
+        public string GetSampleCourse()
         {
             return "mani";
         }
