@@ -15,5 +15,15 @@ namespace ConsoleApp1.models
             return first + second;
         }
 
+        public Dictionary<int, string> getSomeLists()
+        {
+            return new Dictionary<int, string>  {
+                {1,"mani"},
+                {2,"Sahar"},
+                {3,"Mehdi"},
+                {4,"Arash"},
+            };
+        }
+
     }
 }
