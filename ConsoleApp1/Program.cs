@@ -9,7 +9,10 @@ Mani mani = new();
 int res = mani.sum(4, 12);
 string t = course.GetSampleCourse();
 Console.WriteLine(mani.CourserGiver().Name);
-
+Dictionary<int,string> lists = new Dictionary<int,string>  {
+    {1,"mani"},
+};
 string student2Json = JsonSerializer.Serialize(student2, new JsonSerializerOptions { WriteIndented = true });
+Console.WriteLine(student2.ToString());
 Console.WriteLine(student2.ToString());
 
