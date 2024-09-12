@@ -15,12 +15,6 @@ namespace ConsoleApp1.models
 
 
 
-
-
-
-
-
-
         public string Name { get; set; }
 
         public Course(int id, string name)
