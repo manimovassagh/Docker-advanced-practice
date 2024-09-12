@@ -4,9 +4,6 @@ namespace ConsoleApp1.models
     {
         public int Id { get; set; }
 
-
-
-
         public string Name { get; set; }
 
         public Course(int id, string name)
