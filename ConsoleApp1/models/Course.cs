@@ -9,9 +9,6 @@ namespace ConsoleApp1.models
 
 
 
-
-
-
         public Course(int id, string name)
         {
             Id = Id;
