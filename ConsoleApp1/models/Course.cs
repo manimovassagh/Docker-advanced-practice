@@ -24,9 +24,6 @@ namespace ConsoleApp1.models
 
 
 
-
-
-
         public string GetSampleCourse()
         {
             return "mani";
