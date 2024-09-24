@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Function to check if Docker daemon is running
+check_docker_daemon() {
+    if ! docker info > /dev/null 2>&1; then
+        echo "Error: Docker daemon is not running. Please start Docker and try again."
+        exit 1
+    fi
+}
+
 # Function to check if an image exists locally
 check_image_exists_locally() {
     local image_name="$1"
@@ -64,7 +72,10 @@ run_docker_image() {
 
 # Main logic
 
-# Step 1: Get Docker Hub login credentials as arguments
+# Step 1: Check if Docker daemon is running
+check_docker_daemon
+
+# Step 2: Get Docker Hub login credentials as arguments
 if [[ -z "$1" || -z "$2" ]]; then
     echo "Usage: $0 <dockerhub-username> <dockerhub-password>"
     exit 1
@@ -73,14 +84,14 @@ fi
 DOCKER_USER="$1"
 DOCKER_PASSWORD="$2"
 
-# Step 2: Docker login (only once)
+# Step 3: Docker login (only once)
 echo "Logging into Docker Hub..."
 if ! echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin; then
     echo "Error: Docker Hub login failed. Please check your credentials."
     exit 1
 fi
 
-# Step 3: Loop for image input and handling
+# Step 4: Loop for image input and handling
 while true; do
 
     # Get the Docker image name from user input
@@ -114,6 +125,5 @@ while true; do
             exit 1
         fi
     fi
-
 
 done
