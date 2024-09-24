@@ -1,13 +1,13 @@
 #!/bin/bash
 
-IMAGE="hello-world"
-CONTAINER_NAME="hello-world-container"
+IMAGE="ubuntu"
+CONTAINER_NAME="ubuntu-container"
 
-# Step 1: Pull the hello-world image
+# Step 1: Pull the ubuntuimage
 echo "Pulling the $IMAGE image..."
 docker pull $IMAGE
 
-# Step 2: Run the hello-world container
+# Step 2: Run the ubuntu container
 echo "Running the $IMAGE container..."
 docker run --name $CONTAINER_NAME $IMAGE
 
@@ -27,7 +27,7 @@ else
     echo "Container $CONTAINER_NAME does not exist."
 fi
 
-# Step 5: Remove the hello-world image
+# Step 5: Remove the ubuntu image
 echo "Removing the $IMAGE image..."
 docker rmi $IMAGE
 

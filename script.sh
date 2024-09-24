@@ -1,31 +1,41 @@
 #!/bin/bash
 
-# Function to print Docker images in a formatted table
-print_images() {
-    echo "----------------------------------------"
-    echo "| REPOSITORY        | TAG      | IMAGE ID |"
-    echo "----------------------------------------"
-    docker images --format "| {{.Repository}}\t| {{.Tag}}\t| {{.ID}} |" | column -t -s $'\t'
-    echo "----------------------------------------"
-}
+# Step 1: Get the Docker image name from user input
+read -p "Enter the name of the Docker image you want to pull and run: " IMAGE
 
-# Function to remove images with <none> tag
-remove_none_tag_images() {
-    echo "Removing images with <none> tag..."
-    none_images=$(docker images --filter "dangling=true" -q)
-    
-    if [ -z "$none_images" ]; then
-        echo "No images with <none> tag found."
-    else
-        docker rmi $none_images
-        echo "Removed images with <none> tag."
-    fi
-}
+# Set container name based on the image name
+CONTAINER_NAME="${IMAGE}-container"
 
-# Main script
-echo "Listing Docker images:"
-print_images
-echo ""
+# Step 2: Pull the Docker image
+echo "Pulling the $IMAGE image..."
+docker pull $IMAGE
 
-# Remove unnecessary images with <none> tag
-remove_none_tag_images
+# Step 3: Run the Docker container
+echo "Running the $IMAGE container..."
+docker run --name $CONTAINER_NAME $IMAGE
+
+# Step 4: Check if the container exists
+container_id=$(docker ps -a -q --filter "name=$CONTAINER_NAME")
+
+if [ -n "$container_id" ]; then
+    echo "Container $CONTAINER_NAME exists."
+
+    # Step 5: Stop and remove the container
+    echo "Stopping container $CONTAINER_NAME..."
+    docker stop $CONTAINER_NAME
+
+    echo "Removing container $CONTAINER_NAME..."
+    docker rm $CONTAINER_NAME
+else
+    echo "Container $CONTAINER_NAME does not exist."
+fi
+
+# Step 6: Remove the Docker image
+echo "Removing the $IMAGE image..."
+docker rmi $IMAGE
+
+# Step 7: Remove dangling volumes
+echo "Removing any dangling volumes..."
+docker volume prune -f
+
+echo "Process completed."
