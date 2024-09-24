@@ -1,13 +1,22 @@
 #!/bin/bash
 
-# Function to validate if an image exists locally or remotely
-check_image_exists() {
+# Function to check if an image exists locally
+check_image_exists_locally() {
     local image_name="$1"
-    docker pull "$image_name" &> /dev/null
-    if [ $? -ne 0 ]; then
-        return 1  # Image does not exist or is inaccessible
+    if docker images -q "$image_name" &> /dev/null; then
+        return 0  # Image exists locally
     else
-        return 0  # Image exists
+        return 1  # Image does not exist locally
+    fi
+}
+
+# Function to attempt to pull an image from Docker Hub
+pull_image_from_docker_hub() {
+    local image_name="$1"
+    if docker pull "$image_name"; then
+        return 0  # Image pulled successfully
+    else
+        return 1  # Failed to pull the image
     fi
 }
 
@@ -53,37 +62,48 @@ run_docker_image() {
     echo "Process completed."
 }
 
-# Main logic with retry and Docker Hub login
+# Main logic
+
+# Step 1: Get Docker Hub login credentials as arguments
+if [[ -z "$1" || -z "$2" ]]; then
+    echo "Usage: $0 <dockerhub-username> <dockerhub-password>"
+    exit 1
+fi
+
+DOCKER_USER="$1"
+DOCKER_PASSWORD="$2"
+
+# Step 2: Docker login (only once)
+echo "Logging into Docker Hub..."
+if ! echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin; then
+    echo "Error: Docker Hub login failed. Please check your credentials."
+    exit 1
+fi
+
+# Step 3: Loop for image input and handling
 while true; do
-    # Step 1: Get Docker Hub login credentials as arguments
-    if [[ -z "$1" || -z "$2" ]]; then
-        echo "Usage: $0 <dockerhub-username> <dockerhub-password>"
-        exit 1
-    fi
 
-    DOCKER_USER="$1"
-    DOCKER_PASSWORD="$2"
-
-    # Step 2: Docker login
-    echo "Logging into Docker Hub..."
-    if ! echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin; then
-        echo "Error: Docker Hub login failed. Please check your credentials."
-        exit 1
-    fi
-
-    # Step 3: Get the Docker image name from user input
+    # Get the Docker image name from user input
     read -p "Enter the name of the Docker image you want to pull and run: " IMAGE
 
-    # Step 4: Validate that the user input is not empty
+    # Validate that the user input is not empty
     if [[ -z "$IMAGE" ]]; then
         echo "Error: You must provide a Docker image name."
         continue
     fi
 
-    # Step 5: Check if the Docker image exists
-    echo "Checking if the $IMAGE image exists..."
-    if check_image_exists "$IMAGE"; then
-        echo "Image $IMAGE found."
+    # Check if the Docker image exists locally
+    echo "Checking if the $IMAGE image exists locally..."
+    if check_image_exists_locally "$IMAGE"; then
+        echo "Image $IMAGE found locally."
+        run_docker_image "$IMAGE"
+        break
+    fi
+
+    # Pull the Docker image from Docker Hub
+    echo "Pulling the $IMAGE image from Docker Hub..."
+    if pull_image_from_docker_hub "$IMAGE"; then
+        echo "Image $IMAGE pulled successfully."
         run_docker_image "$IMAGE"
         break
     else
@@ -94,4 +114,5 @@ while true; do
             exit 1
         fi
     fi
+
 done
