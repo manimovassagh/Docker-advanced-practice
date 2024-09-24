@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Function to check if Docker daemon is running
+# Function to check if Docker daemon is running worked perfect
 check_docker_daemon() {
     if ! docker info > /dev/null 2>&1; then
         echo "Error: Docker daemon is not running. Please start Docker and try again."
