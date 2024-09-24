@@ -1,16 +1,9 @@
 #!/bin/bash
 
-# Function to check if the input is a valid Docker image name
-is_valid_image() {
-    local image="$1"
-    docker inspect "$image" &> /dev/null
-    return $?
-}
-
 # Step 1: Get the Docker image name from user input
 read -p "Enter the name of the Docker image you want to pull and run: " IMAGE
 
-# Step 2: Validate the image name
+# Step 2: Validate that the user input is not empty
 if [[ -z "$IMAGE" ]]; then
     echo "Error: You must provide a Docker image name."
     exit 1
@@ -19,16 +12,17 @@ fi
 # Step 3: Try to pull the Docker image
 echo "Pulling the $IMAGE image..."
 if ! docker pull "$IMAGE"; then
-    echo "Error: Failed to pull the Docker image '$IMAGE'. Please check the name and try again."
+    echo "Error: Failed to pull the Docker image '$IMAGE'. Please check if the image exists or if you have access to it."
     exit 1
 fi
 
-# Step 4: Run the Docker container with a proper name
+# Set container name based on the image name, replacing invalid characters
 CONTAINER_NAME="${IMAGE//[^a-zA-Z0-9_-]/_}-container"
 
+# Step 4: Run the Docker container
 echo "Running the $IMAGE container with the name $CONTAINER_NAME..."
 if ! docker run --name "$CONTAINER_NAME" "$IMAGE"; then
-    echo "Error: Failed to run the Docker container. Please check if the image or container is valid."
+    echo "Error: Failed to run the Docker container. Please check if the image is valid or if the container is running properly."
     exit 1
 fi
 
