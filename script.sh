@@ -64,7 +64,6 @@ while true; do
         continue
     fi
 
-
     # Step 3: Check if the Docker image exists
     echo "Checking if the $IMAGE image exists..."
     if check_image_exists "$IMAGE"; then
