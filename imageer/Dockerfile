@@ -4,8 +4,6 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-
-
 RUN npm run build
 FROM nginx:alpine AS production-stage
 WORKDIR /usr/share/nginx/html
