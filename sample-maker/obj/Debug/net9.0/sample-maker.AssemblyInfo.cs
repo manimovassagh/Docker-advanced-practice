@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sample-maker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ec26c4097cf037ea0347da21cb3efb7d762584a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be6d686e55d03be8276175e7ad2ddf48b1135a51")]
 [assembly: System.Reflection.AssemblyProductAttribute("sample-maker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sample-maker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
