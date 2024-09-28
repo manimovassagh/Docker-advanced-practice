@@ -1,13 +1,36 @@
-version: '3.8'
 
 services:
-  postgres:
-    image: postgres:latest
-    environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+  db:
+    image: postgres
     volumes:
-      - ./mounter:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
     ports:
       - "5432:5432"
+
+volumes:
+  db-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: "${PWD}/pgdata"
+      o: bind
+    # "driver: local" and "driver_opts" are used to mount the current
+    # directory's "pgdata" directory as a volume in the container.
+    #
+    # "type: none" is used to disable any automatic volume management by
+    # Docker. This is necessary because we're providing a host directory as
+    # the volume device.
+    #
+    # "device: ${PWD}/pgdata" is the directory on the host that we want to
+    # mount as the volume. If the directory does not exist, create it before
+    # running the container.
+    #
+    # "o: bind" is the mount option to use when mounting the host directory
+    # as the volume.
+    # If the directory does not exist, create it before running the container.
+    # In this case, create the "pgdata" directory in the current working
+    # directory.
