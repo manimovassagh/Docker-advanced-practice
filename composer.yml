@@ -15,4 +15,3 @@ services:
        - my-db:/var/lib/mysql
 volumes:
     my-db:
-
