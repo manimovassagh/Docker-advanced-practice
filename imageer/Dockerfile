@@ -12,3 +12,14 @@ RUN rm -rf ./*
 COPY --from=build-stage /app/build . 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+
+
+
+
+
+
+
+
+
+
+
