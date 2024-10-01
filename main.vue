@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     title: {
@@ -23,3 +23,4 @@ export default {
 <style scoped>
 
 </style>
+
