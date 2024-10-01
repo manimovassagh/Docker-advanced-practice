@@ -1,1 +1,1 @@
-// c
+<!-- make a vue componenent -->
