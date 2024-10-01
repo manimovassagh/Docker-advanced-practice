@@ -6,18 +6,10 @@
 </template>
 
 <script lang="ts">
-export default {
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    message: {
-      type: String,
-      required: true
-    }
-  }
-}
+defineProps<{
+  title: string
+  message: string
+}>()
 </script>
 
 <style scoped>
