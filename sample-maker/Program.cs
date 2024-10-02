@@ -11,6 +11,12 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+MyDelegate myDelegate = (int number) =>
+        {
+            Console.WriteLine($"The number is: {number}");
+        };
+
+myDelegate(42);
 
 app.UseHttpsRedirection();
 
