@@ -13,6 +13,8 @@ namespace sample_maker
         public required string ImageUrl { get; set; }
         public bool IsAdvanced { get; set; }
 
+
+
         public static Course AdvancedCourse => new Course
         {
             Id = 1,
