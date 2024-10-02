@@ -15,7 +15,6 @@ namespace sample_maker
         public bool IsAdvanced { get; set; }
 
 
-
         public static Course AdvancedCourse => new Course
         {
             Id = 1,
