@@ -1,8 +1,6 @@
 namespace sample_maker
 {
 
-
-
     public class Course
     {
         public int Id { get; set; }
