@@ -14,5 +14,5 @@ app.MapGet("/", () => new { Name = "Practice makes perfect 😄🚀", Age = 30 }
 
 // Map controller routes
 app.MapControllers(); // Enable attribute routing, so your controllers can be accessed
-System.Console.WriteLine();
+
 app.Run();
