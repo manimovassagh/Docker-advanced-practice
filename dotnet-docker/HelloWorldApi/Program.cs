@@ -14,7 +14,6 @@ var app = builder.Build();
 app.MapGet("/", () => new { Name = "Practice makes perfect 😄🚀", Age = 30 });
 
 
-
 app.MapGet("/del", DelHandler.DelHandleInit);
 
 // Map controller routes
