@@ -10,6 +10,8 @@ builder.Services.AddControllers(); // Register the controllers
 
 var app = builder.Build();
 
+
+
 // Configure the HTTP request pipeline.
 app.MapGet("/", () => new { Name = "Practice makes perfect 😄🚀", Age = 30 });
 
